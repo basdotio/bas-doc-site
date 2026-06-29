@@ -41,6 +41,6 @@ Let’ go
 
 Come on, we need every you. You can join the community and contribute to the project by:
 
-1. Joining the BAS [Telegram](https://t.me/+N6HLxnRL_WE5ZDVl) channel or [Discord](https://discord.com/invite/azhWXBPVjy) for discussions and support.
+1. Joining the BAS [Telegram](https://t.me/basbnbs) channel or [Discord](https://discord.com/invite/azhWXBPVjy) for discussions and support.
 2. Submitting issues or pull requests on [BAS Github repository](https://github.com/bnb-attestation-service).
-3. Following for updates and announcement on X @rido_crypto.
+3. Following for updates and announcement on X @BASCAN_io.
