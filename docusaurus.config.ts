@@ -78,7 +78,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/bnb-attestation-service",
+          href: "https://github.com/basdotio",
           label: "GitHub",
           position: "right",
         },

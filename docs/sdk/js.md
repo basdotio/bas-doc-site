@@ -7,19 +7,19 @@ Here, you will find all the necessary information to begin integrating BAS into 
 To install the BAS JS SDK, run the following command within your project directory:
 
 ```bash
-yarn add @bnb-attestation-service/bas-sdk
+yarn add @basdotio/bas-sdk
 ```
 
 OR
 
 ```bash
-npm install @bnb-attestation-service/bas-sdk
+npm install @basdotio/bas-sdk
 ```
 
 OR
 
 ```bash
-pnpm add @bnb-attestation-service/bas-sdk
+pnpm add @basdotio/bas-sdk
 ```
 
 <aside>
@@ -41,7 +41,7 @@ pnpm add @bnb-attestation-service/bas-sdk
 To begin, we must import and initialize the library before exploring its functionality.
 
 ```jsx
-import { BAS, Offchain, SchemaEncoder, SchemaRegistry } from "@bnb-attestation-service/bas-sdk";
+import { BAS, Offchain, SchemaEncoder, SchemaRegistry } from "@basdotio/bas-sdk";
 import { ethers } from 'ethers';
 
 export const BASContractAddress = "0x6c2270298b1e6046898a322acB3Cbad6F99f7CBD"; //bnb testnet
@@ -76,7 +76,7 @@ To register a new schema, you can use the `register` function provided by the 
 Here’s an example of how to register a new schema:
 
 ```jsx
-import { SchemaRegistry } from "@bnb-attestation-service/bas-sdk";
+import { SchemaRegistry } from "@basdotio/bas-sdk";
 
 const schemaRegistryContractAddress = "0xYourSchemaRegistryContractAddress";
 const schemaRegistry = new SchemaRegistry(schemaRegistryContractAddress);
@@ -104,7 +104,7 @@ Once you have registered a schema, you can utilize its UID to generate attestati
 To obtain the schema information for a particular schema UID, you can utilize the `getSchema` function provided by the BAS SDK. Here is an example:
 
 ```jsx
-import { SchemaRegistry } from "@bnb-attestation-service/bas-sdk";
+import { SchemaRegistry } from "@basdotio/bas-sdk";
 
 const schemaRegistryContractAddress = "0x08C8b8417313fF130526862f90cd822B55002D72";//bnb testnet
 const schemaRegistry = new SchemaRegistry(schemaRegistryContractAddress);
@@ -134,7 +134,7 @@ The `getAttestation` function enables you to fetch an onchain attestation for a 
 ### Usage
 
 ```jsx
-import { BAS } from "@bnb-attestation-service/bas-sdk";
+import { BAS } from "@basdotio/bas-sdk";
 
 const bas = new BAS(BASContractAddress);
 bas.connect(provider);
@@ -193,7 +193,7 @@ The `attest` function enables you to confidently create an on-chain attestation 
 This function gracefully returns a Promise that resolves to the UID of the newly created attestation.
 
 ```jsx
-import { BAS, SchemaEncoder } from "@bnb-attestation-service/bas-sdk";
+import { BAS, SchemaEncoder } from "@basdotio/bas-sdk";
 
 const bas = new BAS(BASContractAddress);
 bas.connect(signer);
@@ -227,7 +227,7 @@ console.log("New attestation UID:", newAttestationUID);
 To generate an off-chain attestation, you can confidently utilize the `signOffchainAttestation` function offered by the Off-chain class in the BAS SDK. Here’s an example:
 
 ```jsx
-import { SchemaEncoder } from "@bnb-attestation-service/bas-sdk";
+import { SchemaEncoder } from "@basdotio/bas-sdk";
 
 const offchain = await bas.getOffchain();
 
@@ -330,7 +330,7 @@ await transaction.wait();
 To revoke an off-chain attestation, you can use the `revokeOffchain` function provided by the BAS SDK. Here’s an example:
 
 ```jsx
-import { BAS } from "@bnb-attestation-service/bas-sdk";
+import { BAS } from "@basdotio/bas-sdk";
 
 const bas = new BAS(BASContractAddress);
 bas.connect(provider);
@@ -364,7 +364,7 @@ gfClient.updateObjectVisibility(objectName, VisibilityType.VISIBILITY_TYPE_PUBLI
 To verify an off-chain attestation, you can utilize the `verifyOffchainAttestationSignature` function provided by the BAS SDK. Here’s an example:
 
 ```jsx
-import { OFFCHAIN_ATTESTATION_VERSION, Offchain, PartialTypedDataConfig } from "@bnb-attestation-service/bas-sdk";
+import { OFFCHAIN_ATTESTATION_VERSION, Offchain, PartialTypedDataConfig } from "@basdotio/bas-sdk";
 
 const attestation = {
 // your offchain attestation
