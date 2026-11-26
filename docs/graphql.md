@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
-sidebar_label: Graphql
+sidebar_label: GraphQL
 ---
 
-# Graphql Usage
+# GraphQL Usage
 We provide a GraphQL service tailored for BAS data. A public version is available at https://cloud.hasura.io/public/graphiql?endpoint=https://mint-reindeer-15.hasura.app/v1/graphql. 
 
 

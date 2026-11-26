@@ -14,10 +14,9 @@ BAS Agent Visitor (`bas_agent_eval`) is an evaluation toolkit for agents registe
 
 ## Installation
 
-Install from source:
+Install from a source checkout of the toolkit. It requires Python 3.10 or later.
 
 ```bash
-git clone https://github.com/bnb-attestation-service/agent_visitor.git
 cd agent_visitor
 python -m venv .venv
 source .venv/bin/activate
