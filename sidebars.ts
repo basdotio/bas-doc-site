@@ -72,7 +72,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Manage Attestation in Greenfield',
       items: [
-        'manage attestation in greenfield on BNB Chain/manger_attestation_in_gf_on_bascan',
+        'manage attestation in greenfield on BNB Chain/manage_attestation_in_gf_on_bascan',
         'manage attestation in greenfield on BNB Chain/manage_attestation_in_gf_on_contract',
       ],
     },

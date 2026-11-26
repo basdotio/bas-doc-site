@@ -7,7 +7,7 @@ Even a non-developer can master the power of attestations, thanks to BASCAN’s 
 
 ## Create a Schema
 
-1. **Access the Schema Builder:** Access TODO: add a link to connect your wallet and create a schema.
+1. **Access the Schema Builder:** Open [BASCAN](https://bascan.io), connect your wallet and choose to create a schema.
 2. **Craft Your schema:** You can customize your schema content using the schema builder. This includes defining the fields of the schema, determining the type of each field, and deciding the order of these fields.
 3. **Resolver Contract (Optional):** Choose whether to use a resolver contract to validate the data.
 4. **Revocable:** Decide if you want attestations for your schema to be revocable.

@@ -11,7 +11,7 @@ On BAS, firstly user should register a [schema](./core_concept/schema.md) in Sch
 Then you can create an on-chain attestation based on one schema. And if the resolver field of the schema your attestation related to if not null, the BAS contract will call the resolver and check the validity of the attestation. After passing the verification, the new created
 attesetation would be recorded in BAS contract.
 
-Or you can create an off-chain attestation and store it in greenfield or any other storage. Then
+Or you can create an off-chain attestation and store it in Greenfield or any other storage.
 
 <div align="center">
 <img src="/figures/work_flow.jpg" width="75%" />
@@ -21,7 +21,7 @@ Either on-chain or off-chain attestation could be claimed as invalid by the atte
 
 ## Contracts
 
-Following is the contract deployed in BNB chain.
+The following contracts are deployed on BNB Chain and opBNB.
 
 ### BNB Mainnet
 
@@ -39,8 +39,12 @@ Following is the contract deployed in BNB chain.
 
 - BAS contract: `0x5e905F77f59491F03eBB78c204986aaDEB0C6bDa`
 - Schema Registry contract: `0x65CFBDf1EA0ACb7492Ecc1610cfBf79665DC631B`
+- Delegate contract: `0x2F086b84b6840e902E1745A94DA648D61B0252B0`
+- Indexer contract: `0x2DA65798a0BA6E5f2D457F4A99890843a7C02aFe`
 
 ### opBNB Testnet
 
 - BAS contract: `0x5e905F77f59491F03eBB78c204986aaDEB0C6bDa`
 - Schema Registry contract: `0x65CFBDf1EA0ACb7492Ecc1610cfBf79665DC631B`
+- Delegate contract: `0x8F6b5B3FFf1899A1107a1338b176f54ab72f27B9`
+- Indexer contract: `0x96Fd40E6EA6826b0336C8018D646a6255a58b618`

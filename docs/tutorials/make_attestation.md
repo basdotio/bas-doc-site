@@ -7,7 +7,7 @@ Depending on your requirements and level of technical expertise, there are multi
 
 - BAS SDK: Designed for developers who are building decentralized applications (D-apps) or integrating attestations into existing platforms.
 - Direct Contract Interaction: For those who prefer maximum flexibility and are comfortable interacting directly with BNB smart contracts.
-- BASScan Website: The most user-friendly option for creating attestations without any coding required.
+- BASCAN Website: The most user-friendly option for creating attestations without any coding required.
 
 ## Understanding the Attestation Record
 
@@ -24,7 +24,7 @@ Before we delve into the process of creating attestations, take a moment to unde
 
 ## Example: On-Chain Attestation Record
 
-Users can clearly view the structure of an on-chain attestation on [BASCAN](https://www.bascan.com).
+Users can clearly view the structure of an on-chain attestation on [BASCAN](https://bascan.io).
 
 <div align="center" id="attestation_detail">
     <img src="/figures/attestation_detail.png" width="80%" />
@@ -52,4 +52,4 @@ Users can find out how to create an on-chain attestation [here](../sdk/js.md#cre
 
 ### Contract
 
-The Contract on [Github](TODO: add link) contains all the smart contract interactions you’d want to find when making an attestation.
+The BAS contract exposes `attest`, `multiAttest`, `attestByDelegation` and the matching `revoke` functions. The deployed addresses for each network are listed in [Quick Start](../quick_start.md#contracts), and the contract source is published under the [BAS GitHub organization](https://github.com/basdotio).

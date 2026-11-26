@@ -29,7 +29,7 @@ We believe by providing above features, BAS will release possibility of Web3. Jo
 
 ## :clap: Start Building
 
-Let’ go
+Let's go
 
 1. [Learn more about BAS and how to use it.](./core_concept/attestation.md)
 2. [Explorer and install the JS SDK.](./sdk/js.md)
@@ -41,6 +41,6 @@ Let’ go
 
 Come on, we need every you. You can join the community and contribute to the project by:
 
-1. Joining the BAS [Telegram](https://t.me/basbnbs) channel or [Discord](https://discord.com/invite/azhWXBPVjy) for discussions and support.
+1. Joining the BAS [Telegram](https://t.me/+On8eyMFa__JjNWY1) channel or [Discord](https://discord.com/invite/HjpUFRsGge) for discussions and support.
 2. Submitting issues or pull requests on [BAS Github repository](https://github.com/basdotio).
-3. Following for updates and announcement on X @BASCAN_io.
+3. Following for updates and announcement on X [@BASCAN_io](https://x.com/BASCAN_io).

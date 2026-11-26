@@ -7,9 +7,9 @@ sidebar_position: 1
 
 - In the BNB Attestation Service (BAS), a schema defines the data structure for attestations. These schemas are customizable and can be created for various purposes, enabling users to utilize existing schemas or generate new ones tailored to their specific needs.
 
-- BAS uses BNB smart contract to register schemas and verify corresponding attestations. The registered schemas can be founded on [BASCAN](https://www.bascan.com).
+- BAS uses BNB smart contract to register schemas and verify corresponding attestations. The registered schemas can be founded on [BASCAN](https://bascan.io).
 
-- [BASCAN](https://www.bascan.com) provides a concise and clear way for users to engage with schemas and attestations. Remember to check whether the schema you intend to create already exists before proceeding, as BAS encourages the reuse of existing schemas to create greater data value.
+- [BASCAN](https://bascan.io) provides a concise and clear way for users to engage with schemas and attestations. Remember to check whether the schema you intend to create already exists before proceeding, as BAS encourages the reuse of existing schemas to create greater data value.
 
 ## The fields in a schema
 
@@ -41,9 +41,9 @@ sidebar_position: 1
 
 ## Create Schemas
 
-### Create a Schema by [BASCAN](http://www.bascan.com)
+### Create a Schema by [BASCAN](https://bascan.io)
 
-BASCAN provide an easy way for everyone to create a schema record without code. Learn more information at [BASCAN](https://www.bascan.com).
+BASCAN provide an easy way for everyone to create a schema record without code. Learn more information at [BASCAN](https://bascan.io).
 
 <div align="center" id="revoke">
     <img src="/figures/create_schema.png" width="80%" />
