@@ -1,41 +1,46 @@
-# Website
+# BAS Docs
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Source of the [BNB Attestation Service](https://www.bas.io/) documentation site, built with [Docusaurus 3](https://docusaurus.io/).
 
-### Installation
+## Requirements
 
-```
-$ yarn
-```
+- Node.js 20 or later
+- npm (the lockfile and the Vercel build both use npm)
 
-### Local Development
+## Local development
 
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
+```bash
+npm install
+npm start
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+`npm start` runs a dev server at http://localhost:3000 with live reload.
 
-### Deployment
+## Build
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
+```bash
+npm run build
+npm run serve
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+`npm run build` writes the static site to `build/`. The build fails on broken internal links, so run it before opening a pull request. `npm run serve` previews the built site locally.
+
+## Project layout
+
+| Path | Purpose |
+|---|---|
+| `docs/` | Markdown pages. Docs are served from the site root (`/`). |
+| `sidebars.ts` | Sidebar structure. A new page must be added here to show up. |
+| `docusaurus.config.ts` | Site metadata, navbar, footer, code-highlighting languages. |
+| `static/figures/` | Images referenced from the docs as `/figures/<name>`. |
+| `src/css/custom.css` | Theme overrides. |
+
+## Writing conventions
+
+- Pages are written in English, with `sidebar_position` and `sidebar_label` front matter.
+- Link to other pages with relative `.md` paths so the build can check them.
+- Contract addresses, endpoints and commands must match the source repositories under [github.com/basdotio](https://github.com/basdotio).
+
+## Deployment
+
+The site is deployed by Vercel from the `main` branch using the settings in `vercel.json` (`npm install`, `npm run build`, output in `build/`).
