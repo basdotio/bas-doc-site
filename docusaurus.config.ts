@@ -89,6 +89,14 @@ const config: Config = {
               to: "/quick_start",
             },
             {
+              label: "ERC-8004 & Agents",
+              to: "/erc8004/overview",
+            },
+            {
+              label: "BAS Guard",
+              to: "/bas_guard/overview",
+            },
+            {
               label: "GraphQL",
               to: "/graphql",
             },

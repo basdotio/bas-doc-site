@@ -80,6 +80,15 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'BAS Guard',
+      items: [
+        'bas_guard/overview',
+        'bas_guard/install',
+        'bas_guard/usage',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Manage Attestation in Greenfield',
       items: [
         'manage attestation in greenfield on BNB Chain/manage_attestation_in_gf_on_bascan',

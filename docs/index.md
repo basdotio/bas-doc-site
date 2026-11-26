@@ -37,6 +37,7 @@ Let's go
 4. [Create your own schema.](./tutorials/create_schema.md)
 5. [Create your first attestation.](./tutorials/make_attestation.md)
 6. [Register and evaluate AI agents with ERC-8004.](./erc8004/overview.md)
+7. [Scan your AI agent environment with BAS Guard.](./bas_guard/overview.md)
 
 ## :school: Join the Community
 
