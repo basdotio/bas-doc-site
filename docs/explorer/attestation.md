@@ -39,7 +39,7 @@ Users can find an attestation by UID in search box.
 4. **On-chain v.s. Off-chain:** Decide to make the attestation on-chain or off-chain. And when user choose to create an off-chain attestation and store in Greenfield, he can set the visibility as public so that anyone can access to it or private so that only the authorized people can view.
 
 <div align="center" id="public|private">
-    <img src="/figures/public|private.pn"g width="60%" />
+    <img src="/figures/public|private.png" width="60%" />
 </div>
 
 5. Once you finish the previous steps, click the “Make Attestation”. Then you can get your attestation for the target schema.
@@ -62,4 +62,4 @@ After a user create an off-chain attestation and store it in greenfield, he can 
 
 ## Share Private Attestations
 
-Coming Soon!
+A private off-chain attestation stays readable only by its owner until the owner grants read permission on the Greenfield bucket that stores it. See [Manage Attestation in Greenfield](../manage%20attestation%20in%20greenfield%20on%20BNB%20Chain/manage_attestation_in_gf_on_contract.md#create-policy) for how to grant that permission through the manager contract.

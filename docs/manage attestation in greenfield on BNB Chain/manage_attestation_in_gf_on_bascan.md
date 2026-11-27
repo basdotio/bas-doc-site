@@ -1,8 +1,11 @@
-# Manager off chain attestation on BASCAN
+---
+slug: manger_attestation_in_gf_on_bascan
+---
+# Manage off-chain attestations on BASCAN
 
-Now user in BASCAN can manager their off-chain attestation on BNB Chain without change network.
+Users can manage their off-chain attestations on BASCAN from BNB Chain, without switching networks.
 
-## Create Manger Contract
+## Create Manager Contract
 
 If users don't have a manager contract, they should create one.
 

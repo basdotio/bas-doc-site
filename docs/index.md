@@ -29,18 +29,20 @@ We believe by providing above features, BAS will release possibility of Web3. Jo
 
 ## :clap: Start Building
 
-Let’ go
+Let's go
 
 1. [Learn more about BAS and how to use it.](./core_concept/attestation.md)
 2. [Explorer and install the JS SDK.](./sdk/js.md)
 3. [Explorer existing schema and attestation.](./explorer/schema.md)
 4. [Create your own schema.](./tutorials/create_schema.md)
 5. [Create your first attestation.](./tutorials/make_attestation.md)
+6. [Register and evaluate AI agents with ERC-8004.](./erc8004/overview.md)
+7. [Scan your AI agent environment with BAS Guard.](./bas_guard/overview.md)
 
 ## :school: Join the Community
 
 Come on, we need every you. You can join the community and contribute to the project by:
 
-1. Joining the BAS [Telegram](https://t.me/basbnbs) channel or [Discord](https://discord.com/invite/azhWXBPVjy) for discussions and support.
+1. Joining the BAS [Telegram](https://t.me/+On8eyMFa__JjNWY1) channel or [Discord](https://discord.com/invite/HjpUFRsGge) for discussions and support.
 2. Submitting issues or pull requests on [BAS Github repository](https://github.com/basdotio).
-3. Following for updates and announcement on X @BASCAN_io.
+3. Following for updates and announcement on X [@BASCAN_io](https://x.com/BASCAN_io).

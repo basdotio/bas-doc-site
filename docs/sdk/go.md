@@ -5,6 +5,25 @@
 ```sh
 $ go get github.com/basdotio/bas-go
 ```
+
+replace dependencies in **go.mod**
+
+```
+cosmossdk.io/api => github.com/bnb-chain/greenfield-cosmos-sdk/api v0.0.0-20230816082903-b48770f5e210
+cosmossdk.io/math => github.com/bnb-chain/greenfield-cosmos-sdk/math v0.0.0-20230816082903-b48770f5e210
+github.com/cometbft/cometbft => github.com/bnb-chain/greenfield-cometbft v1.1.0
+github.com/cometbft/cometbft-db => github.com/bnb-chain/greenfield-cometbft-db v0.8.1-alpha.1
+github.com/cosmos/cosmos-sdk => github.com/bnb-chain/greenfield-cosmos-sdk v1.1.0
+github.com/cosmos/iavl => github.com/bnb-chain/greenfield-iavl v0.20.1
+github.com/syndtr/goleveldb => github.com/syndtr/goleveldb v1.0.1-0.20210819022825-2ae1ddf74ef7
+github.com/consensys/gnark-crypto => github.com/consensys/gnark-crypto v0.7.0
+```
+
+We recommend that you use the robust version of the SDK for Greenfield: 
+```
+github.com/bnb-chain/greenfield v1.2.1-0.20231221015040-11071a6ee95b
+github.com/bnb-chain/greenfield-go-sdk v1.2.1
+```
 ## Agent
 
 Before performing almost any operation (except for some offchain APIs), it is necessary to create a new agent. Please note that creating an agent requires providing the user's private key, so there is a certain risk involved. Please test your operations before performing any actions on the main network. The Go SDK provides a simple way to create an agent:
@@ -13,20 +32,21 @@ You can create an agent using the following approach:
 
 ```go
 var _agent *Agent
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
+if _agent, err = NewAgentFromKey(privateKey, BASCONTRACT, SCHEMAREGISTERCONTRACT, BSCRPC, BSCCHAINID, GFRPC, GFCHAINID); err != nil {
 	panic(err)
 }
 ```
 
-Note that you need to provide the RPC and chainID for the Binance (BNB) and Greenfield (GF) networks, such as:
+Note that you need to provide your private key to sign the attestation, BAS contract and BAS register contract (which can be empty string if not been used). You are also supposed to provide the RPC and chainID for the Binance (BNB) and Greenfield (GF) networks, such as:
 
 ```go
-BNBTESTRPC     = "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
-BNBTESTCHAINID = 97
+BSCRPC     = "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
+BSCCHAINID = 97
 
-GFTESTRPC     = "https://gnfd-testnet-fullnode-tendermint-us.bnbchain.org:443"
-GFTESTCHAINID = "greenfield_5600-1"
+GFRPC     = "https://gnfd-testnet-fullnode-tendermint-us.bnbchain.org:443"
+GFCHAINID = "greenfield_5600-1"
 ```
+
 
 ## Schema
 
@@ -47,11 +67,7 @@ Once users determine the data structure of the schema, whether it can be revoked
 schema := "string bas, uint8 nonce"
 revocable := true
 resolver := ""
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
+
 if attest, err := _agent.CreateSchema(schema, revocable, resolver); err != nil {
 	panic(err)
 } else {
@@ -66,11 +82,6 @@ Sometimes users need to retrieve detailed information about a schema. This can b
 ```go
 schemaUid := "0xabcdefg......"
 
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
 if schema, err := _agent.GetSchema(schemaUid); err != nil {
 	panic(err)
 } else {
@@ -85,11 +96,7 @@ Users can set the name and description for their created schema. Although theore
 ```go
 schemaUid := "0xabcdefg......"
 name := "test_name"
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
+
 if schema, err := _agent.SetSchemaName(schemaUid, name); err != nil {
 	panic(err)
 } else {
@@ -100,11 +107,7 @@ if schema, err := _agent.SetSchemaName(schemaUid, name); err != nil {
 ```go
 schemaUid := "0xabcdefg......"
 descrip := "test name for bas go"
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
+
 if schema, err := _agent.SetSchemaDescription(schemaUid, descrip); err != nil {
 	panic(err)
 } else {
@@ -146,34 +149,34 @@ To create an onchain attestation, users need to provide:
     - Needs to be consistent with the revocable property of the schema being used
 - expirationTime
     - Unix timestamp accurate to the second, 0 means no expiration time
+- recipient
+    - The owner (receiver) of the attestation
+- referencedAttestation
 
 Users can then create an onchain attestation as follows:
 
 ```go
 var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
+
 _agent.OnchainAttest(
 	schemaUid,
+	recipient,
+	referenceAttestation,
 	data,
 	revocable,
 	expirationTime,
+	gasPrice,
+	gasLimit
 )
 ```
-
+If you don't want to set gas price and gas limit manually, set them to 0 to use the default value from RPC.
 ### Get an Attestation onchain
 
 Users can get detailed information about an onchain attestation using OnchainGetAttestation:
 
 ```go
 uid := "0xabcdefg..."
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
+
 if attest, err := _agent.OnchainGetAttestation(uid); err != nil {
 	panic(err)
 } else {
@@ -188,11 +191,7 @@ Users can control the attestation they created by revoking it. For onchain attes
 ```go
 schemaUid := "0x85500e806cf1e74844d51a20a6d893fe1ed6f6b0738b50e43d774827d08eca61"
 uid := "0x10e25590023c3fcdb0aaa1429712a67399328c53e2cfb8658348658e9f07d694"
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
+
 if attest, err := _agent.OnchainRevoke(schema, uid); err != nil {
 	panic(err)
 } else {
@@ -207,15 +206,9 @@ if attest, err := _agent.OnchainRevoke(schema, uid); err != nil {
 Before using most offchain-related APIs, you need to configure the bucket corresponding to the account:
 
 ```go
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
 _agent.ConfigBucket("bas-xxxx")
 ```
-
-Please note that the name of the bucket is "bas" + hashof(ADDRESS) under the official standard. Users can also generate their own buckets in the bas browser and view them in [dcellar.io](http://dcellar.io/).
+Users can also generate their own buckets in the bas browser and view them in [dcellar.io](http://dcellar.io/).
 
 ### Create an attestation offchain
 
@@ -228,11 +221,6 @@ There are several steps to create an offchain attestation:
 To create an attestation and get its corresponding JSON file, you can use the following method (note that this operation is only done locally):
 
 ```go
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
 data := map[string]interface{}{
 	"bas":     "bas-go",
 	"nonce":  0,
@@ -240,7 +228,7 @@ data := map[string]interface{}{
 schema := "string bas, uint8 nonce"
 if res, err := _agent.OffchainNewAttestation(
 		schemaUid,
-		schema,
+		OFFCHAINBASDOMAIN,
 		data,
 		resolver,
 		revocable,
@@ -277,12 +265,6 @@ if hash, err := _agent.OffchainUploadAttestationToGF(res); err != nil {
 If you want to change the public or private status of an offchain attestation uploaded to Greenfield, you can do so as follows:
 
 ```go
-var _agent *Agent
-var err error
-if _agent, err = NewAgentFromKey(privateKey, BNBTESTRPC, BNBTESTCHAINID, GFTESTRPC, GFTESTCHAINID); err != nil {
-	panic(err)
-}
-_agent.ConfigBucket("bas-xxxx")
 if hash, err := _agent.OffchainChangeAttestationVisible(schemaUid, attestationUid, true); err != nil {
 	panic(err)
 } else {

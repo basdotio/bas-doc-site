@@ -14,8 +14,6 @@ User can use the `refUID` field to reference to another attestation. This help u
 
 ### Naming a schema & Description of a schema
 
-//todo: a figure
-
 In [BASCAN](https://bascan.io/), creator of a schema can set the name and description of a schema. There are two kind of schemas called "Naming a schema" and 
 "Description of a schema" with the schema string "name string, uid bytes32" and "description string, uid bytes32" respectively. Where uid is the 
 uid of some schema. When we set a schema `0x2333...2233` name as "GM", we create an "Naming a schema" attestation with data 

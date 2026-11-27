@@ -4,26 +4,22 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "BAS Doc",
-  tagline: "BNB Attesttation Service",
+  tagline: "BNB Attestation Service",
   favicon: "img/bas.jpg",
 
-  // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: "https://doc.bas.io",
   baseUrl: "/",
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "bas", // Usually your GitHub org/user name.
-  projectName: "bas-doc", // Usually your repo name.
+  organizationName: "basdotio",
+  projectName: "bas-doc-site",
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -34,14 +30,9 @@ const config: Config = {
       "classic",
       {
         docs: {
-          // routeBasePath: '/', // Set this value to '/'.
-          // homePageId: 'getting-started', // Set to existing document id.
-          routeBasePath: "/", // Set this value to '/'.
+          // Docs are served from the site root.
+          routeBasePath: "/",
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: false,
         theme: {
@@ -52,8 +43,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "figures/welcome.jpg",
     navbar: {
       title: "BAS Doc",
       logo: {
@@ -99,9 +89,17 @@ const config: Config = {
               to: "/quick_start",
             },
             {
-              label: "Graphql",
-              to:"/Graphql"
-            }
+              label: "ERC-8004 & Agents",
+              to: "/erc8004/overview",
+            },
+            {
+              label: "BAS Guard",
+              to: "/bas_guard/overview",
+            },
+            {
+              label: "GraphQL",
+              to: "/graphql",
+            },
           ],
         },
         {
@@ -128,10 +126,10 @@ const config: Config = {
               label: "Explorer",
               href: "https://bascan.io",
             },
-            // {
-            //   label: 'GitHub',
-            //   href: 'https://github.com/facebook/docusaurus',
-            // },
+            {
+              label: "GitHub",
+              href: "https://github.com/basdotio",
+            },
           ],
         },
       ],
@@ -140,6 +138,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ["solidity", "go", "python", "bash", "json"],
     },
   } satisfies Preset.ThemeConfig,
 };

@@ -70,9 +70,28 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'ERC-8004 & Agents',
+      items: [
+        'erc8004/overview',
+        'erc8004/contracts',
+        'erc8004/python_sdk',
+        'erc8004/agent_evaluation',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'BAS Guard',
+      items: [
+        'bas_guard/overview',
+        'bas_guard/install',
+        'bas_guard/usage',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Manage Attestation in Greenfield',
       items: [
-        'manage attestation in greenfield on BNB Chain/manger_attestation_in_gf_on_bascan',
+        'manage attestation in greenfield on BNB Chain/manage_attestation_in_gf_on_bascan',
         'manage attestation in greenfield on BNB Chain/manage_attestation_in_gf_on_contract',
       ],
     },
