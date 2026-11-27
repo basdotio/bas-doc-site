@@ -22,7 +22,7 @@ sidebar_label: Python SDK
 Install from source:
 
 ```bash
-git clone https://github.com/bnb-attestation-service/erc8004-sdk-py.git
+git clone https://github.com/basdotio/erc8004-sdk-py.git
 cd erc8004-sdk-py
 python -m venv .venv
 source .venv/bin/activate
