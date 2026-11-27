@@ -8,7 +8,7 @@ BAS Guard (`bas-guard`) is a local, offline security scanner and cleanup tool fo
 
 ## Highlights
 
-- **Local and offline.** It never executes the content it scans, makes no network calls and uploads nothing.
+- **Local and offline.** It never executes the content it scans, makes no network calls and uploads nothing. The one exception is the optional LLM check: when you turn it on with `--llm`, redacted excerpts are sent to the endpoint you configured.
 - **Read-only by default.** `scan` and `check` only read. `clean` is the only command that writes, and it only moves files into a trash directory inside your config root. It never deletes.
 - **Single binary.** Pure Go, with no runtime dependencies.
 - **Ten detection dimensions.** Injection, excessive permissions, data exfiltration, code execution, supply chain, obfuscation, backdoor, resource abuse, filesystem and intent mismatch. Intent judging is an optional LLM enhancement that is off by default.

@@ -66,7 +66,7 @@ function getSummary(
 - `score` is between 0 and 100.
 - `tag1` and `tag2` are optional labels used for filtering, for example the kind of task.
 - `feedbackUri` and `feedbackHash` reference an optional off-chain feedback file and commit to its content.
-- `feedbackAuth` is a signature from the agent's owner or operator that pre-authorizes this client to give feedback. It limits spam, but it does not prevent Sybil attacks on its own.
+- `feedbackAuth` pre-authorizes this client to give feedback. It is the ABI-encoded tuple `(agentId, clientAddress, indexLimit, expiry, chainId, identityRegistry, signerAddress)` followed by an EIP-191 signature over it from the agent's owner or operator. The [Python SDK](./python_sdk.md#authorize-and-give-feedback) builds it for you. It limits spam, but it does not prevent Sybil attacks on its own.
 - A client can give several feedback entries to the same agent and can revoke its own entries. `appendResponse` lets anyone attach a response to a feedback entry.
 - `getSummary` aggregates on-chain and can be filtered by client addresses and tags. `readFeedback`, `readAllFeedback`, `getClients` and `getLastIndex` read individual entries.
 
@@ -110,5 +110,6 @@ function comment(uint256 agentId, string calldata commentText, uint16 score) ext
 function commentReply(bytes32 commentAttestationId, string calldata commentText) external;
 ```
 
+- `score` must be between 1 and 100.
 - `comment` creates an attestation under the comment schema, with the Identity Registry as recipient and `(agentId, author, score, commentText)` as data.
 - `commentReply` creates an attestation under the comment-reply schema. It must reference an existing comment or reply attestation.

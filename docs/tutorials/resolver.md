@@ -51,6 +51,13 @@ contract RecipientResolver is SchemaResolver {
 This resolver only accepts an attestation if the attester has approved a given amount of an ERC-20 token to the resolver:
 
 ```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { SchemaResolver } from "../SchemaResolver.sol";
+import { IEAS, Attestation } from "../../IEAS.sol";
+
 contract TokenResolver is SchemaResolver {
     error InvalidAllowance();
 

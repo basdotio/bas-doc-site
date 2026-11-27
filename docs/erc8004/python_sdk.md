@@ -8,7 +8,7 @@ sidebar_label: Python SDK
 
 - Register agent identities on ERC-8004 compatible contracts.
 - Store agent profiles and feedback files on IPFS.
-- Produce the EIP-191 / EIP-712 signatures that authorize feedback.
+- Produce the EIP-191 signatures that authorize feedback.
 - Give, respond to and revoke feedback.
 
 ## Requirements
@@ -77,7 +77,7 @@ profile_uri = client.store_agent_profile(
     AgentProfile(
         name="Sample Agent",
         description="Always-on helper",
-        image=None,
+        image="https://example.com/agent.png",
         endpoints=[{"name": "A2A", "endpoint": "https://example.com/agent.json"}],
         registrations=[
             {"agentId": agent_id, "agentRegistry": f"eip155:97:{client.contract_address}"},
@@ -88,27 +88,33 @@ profile_uri = client.store_agent_profile(
 client.set_agent_uri(agent_id=agent_id, new_uri=profile_uri)
 ```
 
+The stored file lists the entries of `endpoints` under `services`, the name used by the current ERC-8004 registration format, and repeats them under `endpoints` for readers of the earlier draft. Set `image` if you want the profile to pass the [agent evaluation](./agent_evaluation.md) schema check, which requires it.
+
 ## Authorize and give feedback
 
-The agent owner signs a feedback authorization for a client:
+Feedback involves two accounts. The Reputation Registry rejects feedback sent by the agent's own owner, and the authorization must name the account that submits the feedback. In the snippets below, `client` is the agent owner from the previous steps and `reviewer_client` is a second `ERC8004Client` created with the reviewer's account and key.
+
+The agent owner signs a feedback authorization for the reviewer:
 
 ```python
 import time
 
+reviewer_address = "0xReviewerAccount"
+
 feedback_auth = client.build_feedback_auth(
     agent_id=agent_id,
-    client_address="0xClient",
-    index_limit=10,
+    client_address=reviewer_address,
+    index_limit=client.get_last_index(agent_id, reviewer_address) + 1,
     expiry=int(time.time()) + 3600,
     chain_id=97,
     identity_registry=client.contract_address,
 ).hex()
 ```
 
-The client then submits feedback with that authorization:
+The reviewer then submits feedback with that authorization:
 
 ```python
-client.give_feedback(
+reviewer_client.give_feedback(
     agent_id=agent_id,
     score=90,
     tag1="customer_support",
@@ -133,7 +139,13 @@ client.give_feedback(
 
 ## Run the full example
 
-The repository includes an end-to-end reputation workflow in `examples/reputation_workflow.py`. It reads its configuration from a `.env` file in the project root:
+The repository includes an end-to-end reputation workflow in `examples/reputation_workflow.py`. It needs `python-dotenv`, which is part of the `dev` extra:
+
+```bash
+pip install -e ".[dev]"
+```
+
+The example reads its configuration from a `.env` file in the project root:
 
 ```bash
 RPC_URL=https://data-seed-prebsc-1-s1.bnbchain.org:8545
